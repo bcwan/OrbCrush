@@ -6,6 +6,7 @@ class Game {
     this.setUpBoard();
   }
 
+  // set up format of board to DOM HTML
   setUpBoard() {
     const grid = document.createElement("div");
     grid.id = "grid-container";
