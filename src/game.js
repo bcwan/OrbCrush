@@ -3,10 +3,30 @@ let Board = require('./board');
 class Game {
   constructor() {
     this.board = new Board();
+    this.setUpBoard();
   }
 
-  // similar to code in Candy Crush Leetcode question
-  crush(board) {
+  setUpBoard() {
+    const grid = document.createElement("div");
+    grid.id = "grid-container";
+
+    for (let rowIdx = 0; rowIdx < this.board.grid.length; rowIdx++) {
+      let row = document.createElement("div");
+      row.className = `row row-${rowIdx}`;
+
+      for (let colIdx = 0; colIdx < this.board.grid[rowIdx].length; colIdx++) {
+        let square = document.createElement("div");
+        square.className = `square square-${rowIdx}-${colIdx}`;
+        row.appendChild(square);
+      }
+
+      grid.appendChild(row);
+    }
+
+    document.getElementById("board").appendChild(grid);
+  }
+
+  crushOrbs(board) {
     // board cannot be crushed and is in equilibrium
     let done = false;
     
@@ -59,7 +79,7 @@ class Game {
         }
     }
     
-    return done ? crush(board) : board;
+    return done ? crushOrbs(board) : board;
   }
 }
 

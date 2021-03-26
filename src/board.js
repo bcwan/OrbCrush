@@ -4,7 +4,7 @@ class Board {
   }
 
   static makeGrid() {
-    const grid = Array.from(new Array(10), () => new Array(10).fill(null));
+    const grid = Array.from(new Array(10), () => new Array(10).fill(0));
     return grid;
   }
 
@@ -12,7 +12,7 @@ class Board {
 
   // clear board
   clearBoard() {
-    this.grid = Array.from(new Array(10), () => new Array(10).fill(null));
+    this.grid = Array.from(new Array(10), () => new Array(10).fill(0));
   }
   
   // last empty position above
