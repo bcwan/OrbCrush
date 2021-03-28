@@ -27,18 +27,6 @@ class Game {
     document.getElementById("board").appendChild(grid);
   }
 
-  crushOrbs(board) {
-    // board cannot be crushed and is in equilibrium
-    let done = false; 
-    // crush the rows
-    crushRows(board, done);
-    // crush the columns
-    crushColumns(board, done);
-    // gravity
-    gravity(board)
-    return done ? crushOrbs(board) : board;
-  }
-
   crushRows(board, done) {
     for (let row = 0; row < board.length; row++) {
       for (let col = 0; col < board[row].length - 2; col++) {
@@ -54,6 +42,7 @@ class Game {
           }
       }
     }
+    return done;
   }
 
   crushColumns(board, done) {
@@ -71,6 +60,7 @@ class Game {
           }
       }
     }
+    return done;
   }
 
   gravity(board) {
@@ -90,6 +80,22 @@ class Game {
         }
     }
   }
+
+  crushOrbs(board) {
+    // board cannot be crushed and is in equilibrium
+    let keepCrushing = false; 
+    // crush the rows
+    keepCrushing = this.crushRows(board, keepCrushing);
+    // crush the columns
+    keepCrushing = this.crushColumns(board,  keepCrushing);
+    // gravity
+    this.gravity(board);
+    console.log(keepCrushing);
+    return  keepCrushing ? this.crushOrbs(board) : board;
+  }
+
 }
+
+
 
 module.exports = Game;
