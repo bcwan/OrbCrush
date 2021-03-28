@@ -90,7 +90,6 @@ class Game {
     keepCrushing = this.crushColumns(board,  keepCrushing);
     // gravity
     this.gravity(board);
-    console.log(keepCrushing);
     return  keepCrushing ? this.crushOrbs(board) : board;
   }
 
