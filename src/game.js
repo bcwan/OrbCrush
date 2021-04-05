@@ -1,3 +1,4 @@
+// import board
 let Board = require('./board');
 
 class Game {
